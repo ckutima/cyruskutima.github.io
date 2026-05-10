@@ -1,0 +1,710 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Your Name — Customer Support Specialist</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet"/>
+<style>
+  :root {
+    --navy: #0a2d5a;
+    --blue: #1a5ab4;
+    --sky: #e8f0fb;
+    --accent: #f0a500;
+    --white: #ffffff;
+    --off: #f7f8fc;
+    --text: #1a1a2e;
+    --muted: #6b7280;
+    --border: #dde3ee;
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'DM Sans', sans-serif;
+    background: var(--off);
+    color: var(--text);
+    line-height: 1.6;
+    overflow-x: hidden;
+  }
+
+  /* ── NAV ── */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    background: rgba(255,255,255,0.92);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--border);
+    padding: 0 2rem;
+    display: flex; align-items: center; justify-content: space-between;
+    height: 60px;
+  }
+  .nav-brand {
+    font-family: 'DM Serif Display', serif;
+    font-size: 1.1rem; color: var(--navy); text-decoration: none;
+  }
+  .nav-links { display: flex; gap: 2rem; list-style: none; }
+  .nav-links a {
+    text-decoration: none; color: var(--muted);
+    font-size: 0.875rem; font-weight: 500;
+    transition: color 0.2s;
+  }
+  .nav-links a:hover { color: var(--blue); }
+
+  /* ── HERO ── */
+  .hero {
+    min-height: 100vh;
+    background: linear-gradient(135deg, var(--navy) 0%, #1a3a6e 50%, #1a5ab4 100%);
+    display: flex; align-items: center; justify-content: center;
+    text-align: center; padding: 6rem 2rem 4rem;
+    position: relative; overflow: hidden;
+  }
+  .hero::before {
+    content: '';
+    position: absolute; inset: 0;
+    background: radial-gradient(ellipse at 30% 50%, rgba(240,165,0,0.12) 0%, transparent 60%),
+                radial-gradient(ellipse at 70% 80%, rgba(26,90,180,0.3) 0%, transparent 60%);
+  }
+  .hero-inner { position: relative; z-index: 1; max-width: 700px; }
+  .hero-badge {
+    display: inline-block;
+    background: rgba(240,165,0,0.18);
+    border: 1px solid rgba(240,165,0,0.4);
+    color: var(--accent);
+    font-size: 0.78rem; font-weight: 600; letter-spacing: 0.1em;
+    text-transform: uppercase; padding: 0.4rem 1rem;
+    border-radius: 100px; margin-bottom: 1.5rem;
+    animation: fadeUp 0.6s ease both;
+  }
+  .hero h1 {
+    font-family: 'DM Serif Display', serif;
+    font-size: clamp(2.8rem, 7vw, 5rem);
+    color: var(--white); line-height: 1.1;
+    margin-bottom: 0.5rem;
+    animation: fadeUp 0.6s 0.1s ease both;
+  }
+  .hero-title {
+    font-size: 1.1rem; color: rgba(255,255,255,0.65);
+    font-weight: 300; margin-bottom: 1.5rem;
+    animation: fadeUp 0.6s 0.2s ease both;
+  }
+  .hero-desc {
+    font-size: 1rem; color: rgba(255,255,255,0.8);
+    max-width: 520px; margin: 0 auto 2.5rem;
+    line-height: 1.7;
+    animation: fadeUp 0.6s 0.3s ease both;
+  }
+  .hero-stats {
+    display: flex; gap: 2rem; justify-content: center; flex-wrap: wrap;
+    margin-bottom: 2.5rem;
+    animation: fadeUp 0.6s 0.4s ease both;
+  }
+  .stat {
+    text-align: center;
+  }
+  .stat-num {
+    display: block;
+    font-family: 'DM Serif Display', serif;
+    font-size: 2rem; color: var(--accent); line-height: 1;
+  }
+  .stat-label {
+    font-size: 0.75rem; color: rgba(255,255,255,0.55);
+    text-transform: uppercase; letter-spacing: 0.08em;
+  }
+  .hero-cta {
+    display: inline-flex; gap: 1rem; flex-wrap: wrap; justify-content: center;
+    animation: fadeUp 0.6s 0.5s ease both;
+  }
+  .btn {
+    padding: 0.75rem 1.75rem; border-radius: 8px;
+    font-size: 0.9rem; font-weight: 600;
+    text-decoration: none; transition: all 0.2s;
+    cursor: pointer; border: none;
+  }
+  .btn-primary {
+    background: var(--accent); color: var(--navy);
+  }
+  .btn-primary:hover { background: #e09500; transform: translateY(-2px); }
+  .btn-outline {
+    background: transparent;
+    border: 1.5px solid rgba(255,255,255,0.4);
+    color: var(--white);
+  }
+  .btn-outline:hover {
+    background: rgba(255,255,255,0.1);
+    transform: translateY(-2px);
+  }
+
+  /* ── SECTIONS ── */
+  section { padding: 5rem 2rem; }
+  .container { max-width: 860px; margin: 0 auto; }
+  .section-label {
+    font-size: 0.75rem; font-weight: 600;
+    text-transform: uppercase; letter-spacing: 0.12em;
+    color: var(--blue); margin-bottom: 0.5rem;
+  }
+  .section-title {
+    font-family: 'DM Serif Display', serif;
+    font-size: clamp(1.8rem, 4vw, 2.4rem);
+    color: var(--navy); margin-bottom: 1rem; line-height: 1.2;
+  }
+  .section-divider {
+    width: 48px; height: 3px;
+    background: var(--accent); border-radius: 2px;
+    margin-bottom: 2.5rem;
+  }
+
+  /* ── ABOUT ── */
+  .about { background: var(--white); }
+  .about-grid {
+    display: grid; grid-template-columns: 1fr 1fr;
+    gap: 3rem; align-items: start;
+  }
+  .about-text p {
+    color: var(--muted); line-height: 1.8; margin-bottom: 1rem;
+    font-size: 0.975rem;
+  }
+  .about-info { display: flex; flex-direction: column; gap: 1rem; }
+  .info-item {
+    display: flex; align-items: flex-start; gap: 1rem;
+    padding: 1rem; background: var(--off);
+    border-radius: 10px; border: 1px solid var(--border);
+  }
+  .info-icon {
+    width: 38px; height: 38px; border-radius: 8px;
+    background: var(--sky); display: flex;
+    align-items: center; justify-content: center;
+    flex-shrink: 0; font-size: 1.1rem;
+  }
+  .info-item strong { display: block; font-size: 0.8rem; color: var(--navy); margin-bottom: 0.2rem; }
+  .info-item span { font-size: 0.875rem; color: var(--muted); }
+
+  /* ── SKILLS ── */
+  .skills { background: var(--off); }
+  .skills-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1.25rem; }
+  .skill-card {
+    background: var(--white); border: 1px solid var(--border);
+    border-radius: 12px; padding: 1.25rem;
+    transition: box-shadow 0.2s, transform 0.2s;
+  }
+  .skill-card:hover { box-shadow: 0 8px 24px rgba(10,45,90,0.08); transform: translateY(-2px); }
+  .skill-top { display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.6rem; }
+  .skill-name { font-weight: 600; font-size: 0.9rem; color: var(--navy); }
+  .skill-pct { font-size: 0.8rem; font-weight: 600; color: var(--blue); }
+  .skill-bar {
+    height: 5px; background: var(--sky); border-radius: 100px; overflow: hidden;
+  }
+  .skill-fill {
+    height: 100%;
+    background: linear-gradient(90deg, var(--blue), var(--accent));
+    border-radius: 100px;
+    width: 0;
+    transition: width 1.2s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+  .skill-desc { font-size: 0.8rem; color: var(--muted); margin-top: 0.5rem; line-height: 1.5; }
+
+  /* ── EXPERIENCE ── */
+  .experience { background: var(--white); }
+  .timeline { position: relative; padding-left: 1.5rem; }
+  .timeline::before {
+    content: ''; position: absolute; left: 0; top: 6px; bottom: 0;
+    width: 2px; background: var(--border);
+  }
+  .timeline-item { position: relative; margin-bottom: 2.5rem; }
+  .timeline-item::before {
+    content: ''; position: absolute;
+    left: -1.5rem; top: 6px;
+    width: 10px; height: 10px;
+    border-radius: 50%;
+    background: var(--blue);
+    border: 2px solid var(--white);
+    box-shadow: 0 0 0 3px var(--sky);
+  }
+  .timeline-header { display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap; gap: 0.5rem; margin-bottom: 0.25rem; }
+  .timeline-role { font-weight: 600; color: var(--navy); font-size: 1rem; }
+  .timeline-date {
+    font-size: 0.78rem; color: var(--white);
+    background: var(--blue); padding: 0.2rem 0.7rem;
+    border-radius: 100px; white-space: nowrap;
+  }
+  .timeline-company { font-size: 0.875rem; color: var(--blue); margin-bottom: 0.75rem; font-weight: 500; }
+  .timeline-bullets { list-style: none; display: flex; flex-direction: column; gap: 0.4rem; }
+  .timeline-bullets li {
+    font-size: 0.875rem; color: var(--muted);
+    padding-left: 1rem; position: relative; line-height: 1.6;
+  }
+  .timeline-bullets li::before {
+    content: '→'; position: absolute; left: 0;
+    color: var(--accent); font-size: 0.75rem; top: 2px;
+  }
+
+  /* ── ACHIEVEMENTS ── */
+  .achievements { background: var(--navy); }
+  .achievements .section-title { color: var(--white); }
+  .achievements .section-label { color: var(--accent); }
+  .ach-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.25rem; }
+  .ach-card {
+    background: rgba(255,255,255,0.06);
+    border: 1px solid rgba(255,255,255,0.1);
+    border-radius: 12px; padding: 1.5rem;
+    transition: background 0.2s;
+  }
+  .ach-card:hover { background: rgba(255,255,255,0.1); }
+  .ach-num {
+    font-family: 'DM Serif Display', serif;
+    font-size: 2.2rem; color: var(--accent);
+    line-height: 1; margin-bottom: 0.4rem;
+  }
+  .ach-label { font-size: 0.875rem; color: var(--white); font-weight: 500; margin-bottom: 0.4rem; }
+  .ach-desc { font-size: 0.78rem; color: rgba(255,255,255,0.5); line-height: 1.5; }
+
+  /* ── TOOLS ── */
+  .tools { background: var(--off); }
+  .tools-grid { display: flex; flex-wrap: wrap; gap: 0.75rem; }
+  .tool-tag {
+    display: inline-flex; align-items: center; gap: 0.4rem;
+    background: var(--white); border: 1px solid var(--border);
+    padding: 0.5rem 1rem; border-radius: 100px;
+    font-size: 0.875rem; font-weight: 500; color: var(--navy);
+    transition: all 0.2s;
+  }
+  .tool-tag:hover {
+    background: var(--sky); border-color: var(--blue);
+    color: var(--blue); transform: translateY(-1px);
+  }
+  .tool-dot { width: 6px; height: 6px; border-radius: 50%; background: var(--accent); }
+
+  /* ── CONTACT ── */
+  .contact { background: var(--white); }
+  .contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; align-items: start; }
+  .contact-text p { color: var(--muted); font-size: 0.975rem; line-height: 1.8; margin-bottom: 1.5rem; }
+  .contact-links { display: flex; flex-direction: column; gap: 1rem; }
+  .contact-link {
+    display: flex; align-items: center; gap: 1rem;
+    padding: 1rem 1.25rem;
+    background: var(--off); border: 1px solid var(--border);
+    border-radius: 10px; text-decoration: none;
+    transition: all 0.2s;
+  }
+  .contact-link:hover {
+    border-color: var(--blue);
+    background: var(--sky); transform: translateX(4px);
+  }
+  .contact-link-icon {
+    width: 36px; height: 36px; border-radius: 8px;
+    background: var(--navy); color: var(--white);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 1rem; flex-shrink: 0;
+  }
+  .contact-link-text strong { display: block; font-size: 0.8rem; color: var(--navy); }
+  .contact-link-text span { font-size: 0.875rem; color: var(--muted); }
+
+  /* ── FOOTER ── */
+  footer {
+    background: var(--navy); color: rgba(255,255,255,0.5);
+    text-align: center; padding: 1.5rem; font-size: 0.8rem;
+  }
+
+  /* ── ANIMATIONS ── */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(20px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+  .reveal {
+    opacity: 0; transform: translateY(24px);
+    transition: opacity 0.6s ease, transform 0.6s ease;
+  }
+  .reveal.visible { opacity: 1; transform: translateY(0); }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width: 680px) {
+    .about-grid, .contact-grid { grid-template-columns: 1fr; }
+    .skills-grid { grid-template-columns: 1fr; }
+    .ach-grid { grid-template-columns: 1fr 1fr; }
+    .nav-links { display: none; }
+    .hero-stats { gap: 1.5rem; }
+  }
+  @media (max-width: 420px) {
+    .ach-grid { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a class="nav-brand" href="#">CK</a>
+  <ul class="nav-links">
+    <li><a href="#about">About</a></li>
+    <li><a href="#skills">Skills</a></li>
+    <li><a href="#experience">Experience</a></li>
+    <li><a href="#achievements">Results</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-inner">
+    <span class="hero-badge">Available for Remote Roles</span>
+    <h1>Cyrus Luvale Kutima</h1>
+    <p class="hero-title">Customer Service Representative &amp; Support Specialist</p>
+    <p class="hero-desc">
+      4+ years turning difficult conversations into resolved tickets and one-time callers
+      into loyal customers — across phone, email, and live chat.
+    </p>
+    <div class="hero-stats">
+      <div class="stat">
+        <span class="stat-num">92%</span>
+        <span class="stat-label">First Contact Resolution</span>
+      </div>
+      <div class="stat">
+        <span class="stat-num">98%</span>
+        <span class="stat-label">Record Accuracy</span>
+      </div>
+      <div class="stat">
+        <span class="stat-num">85%+</span>
+        <span class="stat-label">CSAT Score</span>
+      </div>
+      <div class="stat">
+        <span class="stat-num">4+</span>
+        <span class="stat-label">Years Experience</span>
+      </div>
+    </div>
+    <div class="hero-cta">
+      <a href="#contact" class="btn btn-primary">Get In Touch</a>
+      <a href="#experience" class="btn btn-outline">View My Work</a>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section class="about" id="about">
+  <div class="container">
+    <p class="section-label reveal">About Me</p>
+    <h2 class="section-title reveal">The person behind the ticket queue</h2>
+    <div class="section-divider reveal"></div>
+    <div class="about-grid">
+      <div class="about-text reveal">
+        <p>
+          I am a customer service and support professional with over four years of
+          experience across phone, email, and live chat. I have handled everything
+          from simple product inquiries to complex complaints that needed careful
+          escalation and genuine follow-through.
+        </p>
+        <p>
+          What I enjoy most about support work is the problem-solving side. Most
+          customers are not looking for a script — they want someone who listens,
+          understands what went wrong, and comes back with a real answer. That is
+          how I approach every interaction.
+        </p>
+        <p>
+          I am comfortable with CRM tools including Zendesk, Freshdesk, and
+          Salesforce, and I know how to stay accurate and organised when things
+          get busy. Based in Nairobi, Kenya and open to remote opportunities worldwide.
+        </p>
+      </div>
+      <div class="about-info reveal">
+        <div class="info-item">
+          <div class="info-icon">📍</div>
+          <div>
+            <strong>Location</strong>
+            <span>Nairobi, Kenya — Remote Ready</span>
+          </div>
+        </div>
+        <div class="info-item">
+          <div class="info-icon">⌚</div>
+          <div>
+            <strong>Availability</strong>
+            <span>Full-time · Flexible with US/EU hours</span>
+          </div>
+        </div>
+        <div class="info-item">
+          <div class="info-icon">⌨️</div>
+          <div>
+            <strong>Typing Speed</strong>
+            <span>55+ WPM with high accuracy</span>
+          </div>
+        </div>
+        <div class="info-item">
+          <div class="info-icon">🌐</div>
+          <div>
+            <strong>Languages</strong>
+            <span>English (Fluent) · Swahili (Native)</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SKILLS -->
+<section class="skills" id="skills">
+  <div class="container">
+    <p class="section-label reveal">What I Bring</p>
+    <h2 class="section-title reveal">Skills &amp; Competencies</h2>
+    <div class="section-divider reveal"></div>
+    <div class="skills-grid">
+
+      <div class="skill-card reveal">
+        <div class="skill-top">
+          <span class="skill-name">Multi-channel Support</span>
+          <span class="skill-pct">95%</span>
+        </div>
+        <div class="skill-bar"><div class="skill-fill" data-width="95"></div></div>
+        <p class="skill-desc">Phone, email, and live chat — managing 80+ contacts daily while keeping every response within SLA and quality targets.</p>
+      </div>
+
+      <div class="skill-card reveal">
+        <div class="skill-top">
+          <span class="skill-name">Complaint Resolution</span>
+          <span class="skill-pct">92%</span>
+        </div>
+        <div class="skill-bar"><div class="skill-fill" data-width="92"></div></div>
+        <p class="skill-desc">92% first-contact resolution rate — de-escalating frustrated customers through active listening and clear, honest communication.</p>
+      </div>
+
+      <div class="skill-card reveal">
+        <div class="skill-top">
+          <span class="skill-name">CRM Proficiency</span>
+          <span class="skill-pct">90%</span>
+        </div>
+        <div class="skill-bar"><div class="skill-fill" data-width="90"></div></div>
+        <p class="skill-desc">Zendesk, Freshdesk, Salesforce. Picks up new platforms fast — fully productive on two new tools within one week each.</p>
+      </div>
+
+      <div class="skill-card reveal">
+        <div class="skill-top">
+          <span class="skill-name">Record Accuracy &amp; Documentation</span>
+          <span class="skill-pct">98%</span>
+        </div>
+        <div class="skill-bar"><div class="skill-fill" data-width="98"></div></div>
+        <p class="skill-desc">98% accuracy across all CRM entries. Zero audit flags raised across two consecutive internal compliance reviews.</p>
+      </div>
+
+      <div class="skill-card reveal">
+        <div class="skill-top">
+          <span class="skill-name">Escalation &amp; Coordination</span>
+          <span class="skill-pct">88%</span>
+        </div>
+        <div class="skill-bar"><div class="skill-fill" data-width="88"></div></div>
+        <p class="skill-desc">Reduced re-escalations by 22% by providing full case context before every internal handoff. Customers stopped repeating themselves.</p>
+      </div>
+
+      <div class="skill-card reveal">
+        <div class="skill-top">
+          <span class="skill-name">Remote Self-Management</span>
+          <span class="skill-pct">97%</span>
+        </div>
+        <div class="skill-bar"><div class="skill-fill" data-width="97"></div></div>
+        <p class="skill-desc">97% schedule adherence across remote roles. Stable setup, personal accountability, no supervision needed to stay on target.</p>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- EXPERIENCE -->
+<section class="experience" id="experience">
+  <div class="container">
+    <p class="section-label reveal">Work History</p>
+    <h2 class="section-title reveal">Professional Experience</h2>
+    <div class="section-divider reveal"></div>
+    <div class="timeline">
+
+      <div class="timeline-item reveal">
+        <div class="timeline-header">
+          <span class="timeline-role">Senior Customer Experience Associate</span>
+          <span class="timeline-date">March 2025 – Present</span>
+        </div>
+        <div class="timeline-company">Mageluna Enterprises · Ecommerce</div>
+        <ul class="timeline-bullets">
+          <li>Handled 80+ inbound contacts daily across phone, email, and live chat — maintaining first-response under 4 minutes for 88% of contacts.</li>
+          <li>Achieved 92% first-contact resolution by thoroughly researching issues before responding.</li>
+          <li>Maintained 98% CRM record accuracy — zero flags during quarterly compliance reviews.</li>
+          <li>Finished top 20% of team performance rankings for three consecutive quarters.</li>
+        </ul>
+      </div>
+
+      <div class="timeline-item reveal">
+        <div class="timeline-header">
+          <span class="timeline-role">Customer Service Representative</span>
+          <span class="timeline-date">March 2018 – February 2025</span>
+        </div>
+        <div class="timeline-company">Mageluna Enterprises · Ecommerce</div>
+        <ul class="timeline-bullets">
+          <li>Managed full inbound queue across chat and email — resolving complaints and following up on every open case until fully closed.</li>
+          <li>Achieved 91% QA scores on monitored interactions and 97% schedule adherence.</li>
+          <li>Reduced escalation resolution time by 30% by improving case documentation before handoff.</li>
+        </ul>
+      </div>
+
+      <div class="timeline-item reveal">
+        <div class="timeline-header">
+          <span class="timeline-role">Call Centre &amp; Chat Agent</span>
+          <span class="timeline-date">March 2018 – February 2025</span>
+        </div>
+        <div class="timeline-company">Mageluna Enterprises · Ecommerce</div>
+        <ul class="timeline-bullets">
+          <li>Handled inbound calls and chat contacts — resolving majority at first contact and logging all outcomes accurately in the CRM.</li>
+          <li>Learned internal tools within one week and handled a full independent queue by day ten.</li>
+        </ul>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ACHIEVEMENTS -->
+<section class="achievements" id="achievements">
+  <div class="container">
+    <p class="section-label reveal">By The Numbers</p>
+    <h2 class="section-title reveal">Results That Speak</h2>
+    <div class="section-divider reveal"></div>
+    <div class="ach-grid">
+      <div class="ach-card reveal">
+        <div class="ach-num">92%</div>
+        <div class="ach-label">First Contact Resolution</div>
+        <div class="ach-desc">Sustained over 12 months — reducing repeat contacts consistently</div>
+      </div>
+      <div class="ach-card reveal">
+        <div class="ach-num">98%</div>
+        <div class="ach-label">Record Accuracy</div>
+        <div class="ach-desc">Zero audit flags across two consecutive internal compliance reviews</div>
+      </div>
+      <div class="ach-card reveal">
+        <div class="ach-num">Top 20%</div>
+        <div class="ach-label">Team Performance</div>
+        <div class="ach-desc">Three consecutive quarters based on quality, SLA, and CSAT</div>
+      </div>
+      <div class="ach-card reveal">
+        <div class="ach-num">30%</div>
+        <div class="ach-label">Faster Resolutions</div>
+        <div class="ach-desc">Reduced escalation time by improving case briefing before handoff</div>
+      </div>
+      <div class="ach-card reveal">
+        <div class="ach-num">97%</div>
+        <div class="ach-label">Schedule Adherence</div>
+        <div class="ach-desc">Consistent across rotating shifts and fully remote roles</div>
+      </div>
+      <div class="ach-card reveal">
+        <div class="ach-num">85%+</div>
+        <div class="ach-label">CSAT Score</div>
+        <div class="ach-desc">Maintained above target every quarter across all roles</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TOOLS -->
+<section class="tools" id="tools">
+  <div class="container">
+    <p class="section-label reveal">Tech Stack</p>
+    <h2 class="section-title reveal">Tools &amp; Platforms</h2>
+    <div class="section-divider reveal"></div>
+    <div class="tools-grid reveal">
+      <span class="tool-tag"><span class="tool-dot"></span>Zendesk</span>
+      <span class="tool-tag"><span class="tool-dot"></span>Freshdesk</span>
+      <span class="tool-tag"><span class="tool-dot"></span>Salesforce</span>
+      <span class="tool-tag"><span class="tool-dot"></span>ZOHO</span>
+      <span class="tool-tag"><span class="tool-dot"></span>Google Workspace</span>
+      <span class="tool-tag"><span class="tool-dot"></span>Microsoft Office</span>
+      <span class="tool-tag"><span class="tool-dot"></span>Zoom</span>
+      <span class="tool-tag"><span class="tool-dot"></span>Google Meet</span>
+      <span class="tool-tag"><span class="tool-dot"></span>Microsoft Teams</span>
+      <span class="tool-tag"><span class="tool-dot"></span>Slack</span>
+      <span class="tool-tag"><span class="tool-dot"></span>Live Chat Platforms</span>
+      <span class="tool-tag"><span class="tool-dot"></span>EMR Systems</span>
+      <span class="tool-tag"><span class="tool-dot"></span>Microsoft Excel</span>
+      <span class="tool-tag"><span class="tool-dot"></span>Google Sheets</span>
+      <span class="tool-tag"><span class="tool-dot"></span>Hodu</span>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section class="contact" id="contact">
+  <div class="container">
+    <p class="section-label reveal">Let's Connect</p>
+    <h2 class="section-title reveal">Get In Touch</h2>
+    <div class="section-divider reveal"></div>
+    <div class="contact-grid">
+      <div class="contact-text reveal">
+        <p>
+          I am currently open to remote customer service, support specialist,
+          and client success roles. If you have a position that needs someone
+          reliable, detail-oriented, and genuinely good with people — let's talk.
+        </p>
+        <p>
+          Response time: usually within a few hours during business days.
+        </p>
+        <a href="mailto:ckutima@outlook.com" class="btn btn-primary">Send Me An Email</a>
+      </div>
+      <div class="contact-links reveal">
+        <a href="mailto:ckutima@outlook.com" class="contact-link">
+          <div class="contact-link-icon">✉</div>
+          <div class="contact-link-text">
+            <strong>Email</strong>
+            <span>ckutima@outlook.com</span>
+          </div>
+        </a>
+        <a href="tel:+254728920357" class="contact-link">
+          <div class="contact-link-icon">📞</div>
+          <div class="contact-link-text">
+            <strong>Phone / WhatsApp</strong>
+            <span>+254 728 920 357</span>
+          </div>
+        </a>
+        <a href="https://linkedin.com/in/cyrus-kutima-a7a560a7" target="_blank" class="contact-link">
+          <div class="contact-link-icon">in</div>
+          <div class="contact-link-text">
+            <strong>LinkedIn</strong>
+            <span>linkedin.com/in/cyrus-kutima-a7a560a7</span>
+          </div>
+        </a>
+        <a href="#" class="contact-link">
+          <div class="contact-link-icon">📄</div>
+          <div class="contact-link-text">
+            <strong>Location</strong>
+            <span>Nairobi, Kenya — Remote Ready</span>
+          </div>
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <p>© 2026 Cyrus Luvale Kutima · Customer Support Specialist · Built with care</p>
+</footer>
+
+<script>
+  // Scroll reveal
+  const reveals = document.querySelectorAll('.reveal');
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach((e, i) => {
+      if (e.isIntersecting) {
+        setTimeout(() => e.target.classList.add('visible'), i * 60);
+        observer.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.1 });
+  reveals.forEach(el => observer.observe(el));
+
+  // Skill bar animation
+  const skillObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.querySelectorAll('.skill-fill').forEach(bar => {
+          const w = bar.dataset.width;
+          setTimeout(() => bar.style.width = w + '%', 200);
+        });
+        skillObserver.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.2 });
+  document.querySelectorAll('.skills-grid').forEach(g => skillObserver.observe(g));
+</script>
+</body>
+</html>
